@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hungry Hive — Six food brands, one kitchen, delivered across Bengaluru</title>
+<meta name="description" content="Hungry Hive is a Bengaluru cloud kitchen running six delivery brands — biryani, bowls, burgers, dosas, wok and pizza — hot at your door in about 28 minutes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Loader: order tracker -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="ticket">
+    <p class="ticket-id">Order #HH-2611</p>
+    <ol class="ticket-steps">
+      <li data-step="0">Order received</li>
+      <li data-step="1">On the stove</li>
+      <li data-step="2">Out for delivery</li>
+    </ol>
+    <div class="ticket-road">
+      <span class="ticket-fill" id="ticketFill"></span>
+      <svg class="ticket-scooter" id="ticketScooter" viewBox="0 0 64 40"><g fill="none" stroke="#2A1340" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="31" r="6" fill="#FFD447"/><circle cx="51" cy="31" r="6" fill="#FFD447"/><path d="M13 31h16l8-14h10l4 14"/><rect x="2" y="8" width="18" height="14" rx="3" fill="#FF5D5D"/><path d="M41 17l-3-9h7"/></g></svg>
+    </div>
+  </div>
+</div>
+
+<header class="nav" id="nav">
+  <a href="#top" class="brand" aria-label="Hungry Hive home">
+    <svg viewBox="0 0 36 40" aria-hidden="true"><path d="M18 2l15 8.5v19L18 38 3 29.5v-19z" fill="#FFD447" stroke="#2A1340" stroke-width="3" stroke-linejoin="round"/><path d="M12 22c2 3 10 3 12 0" stroke="#2A1340" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+    Hungry Hive
+  </a>
+  <nav class="nav-links" aria-label="Main">
+    <a href="#brands">Our brands</a>
+    <a href="#bowl">Build a bowl</a>
+    <a href="#bestsellers">Bestsellers</a>
+    <a href="#zones">Delivery areas</a>
+  </nav>
+  <button class="cart-btn magnetic" id="cartBtn" aria-label="Cart, 0 items">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14l-1.4 11.2a2 2 0 0 1-2 1.8H8.4a2 2 0 0 1-2-1.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 7a3 3 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    <span>Cart</span><b id="cartCount">0</b>
+  </button>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span>Hot food.</span>
+        <span class="ht-coral">Delivered fresh.</span>
+      </h1>
+      <p class="hero-desc">Biryani, bowls, burgers, dosas, wok and pizza — cooked to order in our HSR Layout kitchen and on your table while it's still steaming.</p>
+      <div class="hero-actions">
+        <a href="#bestsellers" class="btn btn-coral magnetic">Order now</a>
+        <a href="#brands" class="btn btn-line">Meet the brands</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-pill"><span class="stat-icon">⚡</span> <strong>28 min</strong> average delivery</div>
+        <div class="stat-pill"><span class="stat-icon">🍳</span> <strong>6 brands</strong> from one kitchen</div>
+      </div>
+    </div>
+
+    <div class="hero-stage">
+      <div class="orbit-track" aria-hidden="true"></div>
+      <div class="orbit" id="orbit" aria-hidden="true">
+        <div class="orbit-ring">
+          <span class="o" title="Smash Burger"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80&auto=format&fit=crop" alt="Burger"></span>
+          <span class="o" title="Stone-baked Pizza"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80&auto=format&fit=crop" alt="Pizza"></span>
+          <span class="o" title="Dum Biryani"><img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400&q=80&auto=format&fit=crop" alt="Biryani"></span>
+          <span class="o" title="Wok Noodles"><img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400&q=80&auto=format&fit=crop" alt="Noodles"></span>
+          <span class="o" title="Crispy Dosa"><img src="https://images.unsplash.com/photo-1630383249896-424e482df921?w=400&q=80&auto=format&fit=crop" alt="Dosa"></span>
+          <span class="o" title="Fresh Bowls"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80&auto=format&fit=crop" alt="Salad Bowl"></span>
+        </div>
+      </div>
+      <div class="hero-bowl" id="heroBowl">
+        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1000&q=80&auto=format&fit=crop" alt="Colourful signature power bowl with grilled salmon, greens and vegetables" fetchpriority="high">
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE FEED -->
+  <section class="live" aria-label="Recent orders">
+    <div class="live-label"><span class="live-dot"></span>Leaving the kitchen now</div>
+    <div class="live-window">
+      <ul class="live-feed" id="liveFeed">
+        <li><b>Priya, HSR Layout</b> ordered Hyderabadi chicken dum biryani</li>
+        <li><b>Rahul, Koramangala</b> ordered 2× Smash double cheeseburger</li>
+        <li><b>Meera, Bellandur</b> ordered Paneer tikka power bowl</li>
+        <li><b>Arjun, BTM Layout</b> ordered Ghee podi idli-vada</li>
+        <li><b>Fatima, Sarjapur Rd</b> ordered Chilli garlic noodles + Dragon chicken</li>
+        <li><b>Vikram, Indiranagar</b> ordered Peri peri paneer pizza</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- BRANDS: stacking cards -->
+  <section class="brands" id="brands">
+    <div class="brands-intro">
+      <h2>Six cravings.<br>One very busy kitchen.</h2>
+      <p>Each brand has its own chefs, recipes and station. They just share a roof, a quality lead and the same obsession with packaging that doesn't go soggy.</p>
+    </div>
+    <div class="stack">
+      <article class="brand-card" style="--c:#FF5D5D;--t:#2A1340">
+        <div class="bc-copy">
+          <span class="bc-tag">Biryani &amp; kebabs</span>
+          <h3>Biryani Bros</h3>
+          <p>Hyderabadi kacchi dum, sealed with dough and cooked on slow coal. Every handi gets a boiled egg and a mirchi ka salan.</p>
+          <ul><li>Bestseller: Chicken dum, ₹329</li><li>Serves 1–2</li></ul>
+        </div>
+        <div class="bc-img"><img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=1000&q=80&auto=format&fit=crop" alt="Biryani in a bowl with raita"></div>
+      </article>
+      <article class="brand-card" style="--c:#C9F27B;--t:#2A1340">
+        <div class="bc-copy">
+          <span class="bc-tag">Protein bowls</span>
+          <h3>Bowl Theory</h3>
+          <p>Millet, brown rice or greens topped with grilled proteins and house sauces. Calories and macros printed on every lid.</p>
+          <ul><li>Bestseller: Paneer tikka bowl, ₹289</li><li>40g+ protein options</li></ul>
+        </div>
+        <div class="bc-img"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1000&q=80&auto=format&fit=crop" alt="Healthy grain bowl"></div>
+      </article>
+      <article class="brand-card" style="--c:#FFD447;--t:#2A1340">
+        <div class="bc-copy">
+          <span class="bc-tag">Smash burgers</span>
+          <h3>Burger Lab</h3>
+          <p>Patties smashed thin on a 250°C griddle, potato buns toasted in butter, and fries that survive a 25-minute ride.</p>
+          <ul><li>Bestseller: Double cheese smash, ₹349</li><li>Veg patties made in-house</li></ul>
+        </div>
+        <div class="bc-img"><img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=1000&q=80&auto=format&fit=crop" alt="Cheeseburger with fries"></div>
+      </article>
+      <article class="brand-card" style="--c:#7FD3FF;--t:#2A1340">
+        <div class="bc-copy">
+          <span class="bc-tag">South Indian tiffin</span>
+          <h3>Dosa Republic</h3>
+          <p>Batter fermented overnight, idlis steamed to order and dosas packed flat in vented boxes so they arrive crisp. Chutneys ground fresh every morning.</p>
+          <ul><li>Bestseller: Ghee podi idli-vada, ₹149</li><li>Breakfast from 7 am</li></ul>
+        </div>
+        <div class="bc-img"><img src="https://images.unsplash.com/photo-1630383249896-424e482df921?w=1000&q=80&auto=format&fit=crop" alt="Idli and vada with sambar and chutneys"></div>
+      </article>
+      <article class="brand-card" style="--c:#2A1340;--t:#FFFFFF">
+        <div class="bc-copy">
+          <span class="bc-tag">Indo-Chinese wok</span>
+          <h3>Wok Street</h3>
+          <p>High-flame woks, hakka noodles and Kolkata-style chilli chicken. Sauces on the side if you're ordering for later.</p>
+          <ul><li>Bestseller: Dragon chicken combo, ₹299</li><li>Jain options available</li></ul>
+        </div>
+        <div class="bc-img"><img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=1000&q=80&auto=format&fit=crop" alt="Bowl of noodles"></div>
+      </article>
+      <article class="brand-card" style="--c:#E9DDFF;--t:#2A1340">
+        <div class="bc-copy">
+          <span class="bc-tag">Hand-stretched pizza</span>
+          <h3>Slice &amp; Co</h3>
+          <p>48-hour dough, stone-baked at 400°C and cut into eight. Desi toppings like peri peri paneer and butter chicken.</p>
+          <ul><li>Bestseller: Peri peri paneer, ₹399</li><li>Family 12-inch size</li></ul>
+        </div>
+        <div class="bc-img"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1000&q=80&auto=format&fit=crop" alt="Pizza fresh from the oven"></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how">
+    <h2>From our stove to your door</h2>
+    <div class="how-wrap">
+      <svg class="how-path" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true">
+        <path id="howPath" d="M40 220 C 260 40, 420 40, 600 150 S 960 280, 1160 80" fill="none" stroke="#2A1340" stroke-width="4" stroke-dasharray="1 0" stroke-linecap="round"/>
+      </svg>
+      <ol class="how-steps">
+        <li>
+          <span class="how-num">1</span>
+          <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=600&q=80&auto=format&fit=crop" alt="Cooks at work in a professional kitchen">
+          <h3>You order</h3>
+          <p>On our site, Swiggy or Zomato. Your ticket prints at the right station in seconds.</p>
+        </li>
+        <li>
+          <span class="how-num">2</span>
+          <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=600&q=80&auto=format&fit=crop" alt="Chef cooking at the stove">
+          <h3>We cook it fresh</h3>
+          <p>Nothing sits under a heat lamp. Average time on the stove: 11 minutes.</p>
+        </li>
+        <li>
+          <span class="how-num">3</span>
+          <img src="https://images.unsplash.com/photo-1526367790999-0150786686a2?w=600&q=80&auto=format&fit=crop" alt="Delivery rider on a scooter">
+          <h3>It rides to you</h3>
+          <p>Sealed, tamper-proof and insulated, with live tracking until it reaches your door.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- BUILD A BOWL -->
+  <section class="bowl" id="bowl">
+    <div class="bowl-visual">
+      <div class="bowl-plate">
+        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=900&q=80&auto=format&fit=crop" alt="Bowl of fresh food">
+      </div>
+      <div class="bowl-price" aria-live="polite"><span>Your bowl</span><strong id="bowlPrice">₹249</strong></div>
+    </div>
+    <div class="bowl-builder">
+      <h2>Build your own bowl</h2>
+      <p>Pick one of each. We'll print the macros on the lid.</p>
+      <form id="bowlForm">
+        <fieldset>
+          <legend>Base</legend>
+          <div class="chips">
+            <label><input type="radio" name="base" value="0" data-label="Brown rice" checked><span>Brown rice</span></label>
+            <label><input type="radio" name="base" value="20" data-label="Foxtail millet"><span>Foxtail millet +₹20</span></label>
+            <label><input type="radio" name="base" value="30" data-label="Quinoa"><span>Quinoa +₹30</span></label>
+            <label><input type="radio" name="base" value="0" data-label="Lettuce & greens"><span>Greens</span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Protein</legend>
+          <div class="chips">
+            <label><input type="radio" name="protein" value="0" data-label="Paneer tikka" checked><span>Paneer tikka</span></label>
+            <label><input type="radio" name="protein" value="40" data-label="Tandoori chicken"><span>Tandoori chicken +₹40</span></label>
+            <label><input type="radio" name="protein" value="70" data-label="Peri peri prawns"><span>Peri peri prawns +₹70</span></label>
+            <label><input type="radio" name="protein" value="10" data-label="Chickpea masala"><span>Chickpea masala +₹10</span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Sauce</legend>
+          <div class="chips">
+            <label><input type="radio" name="sauce" value="0" data-label="Mint yoghurt" checked><span>Mint yoghurt</span></label>
+            <label><input type="radio" name="sauce" value="0" data-label="Roasted tomato chutney"><span>Tomato chutney</span></label>
+            <label><input type="radio" name="sauce" value="15" data-label="Peanut sriracha"><span>Peanut sriracha +₹15</span></label>
+          </div>
+        </fieldset>
+        <button type="submit" class="btn btn-coral btn-wide magnetic">Add bowl to cart</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- BESTSELLERS -->
+  <section class="best" id="bestsellers">
+    <div class="best-head">
+      <h2>What Bengaluru ordered this week</h2>
+      <div class="filter" role="group" aria-label="Filter dishes">
+        <button class="is-on" data-f="all">All</button>
+        <button data-f="veg">Veg</button>
+        <button data-f="nonveg">Non-veg</button>
+      </div>
+    </div>
+    <div class="best-grid" id="bestGrid">
+      <article class="dish" data-type="nonveg">
+        <div class="dish-img"><img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=700&q=80&auto=format&fit=crop" alt="Chicken dum biryani"></div>
+        <div class="dish-body"><span class="dish-brand">Biryani Bros</span><h3>Chicken dum biryani</h3><div class="dish-foot"><b>₹329</b><button class="add" data-name="Chicken dum biryani">Add</button></div></div>
+      </article>
+      <article class="dish" data-type="nonveg">
+        <div class="dish-img"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=700&q=80&auto=format&fit=crop" alt="Double cheeseburger"></div>
+        <div class="dish-body"><span class="dish-brand">Burger Lab</span><h3>Double cheese smash</h3><div class="dish-foot"><b>₹349</b><button class="add" data-name="Double cheese smash">Add</button></div></div>
+      </article>
+      <article class="dish" data-type="veg">
+        <div class="dish-img"><img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=700&q=80&auto=format&fit=crop" alt="Paneer tikka bowl"></div>
+        <div class="dish-body"><span class="dish-brand">Bowl Theory</span><h3>Paneer tikka power bowl</h3><div class="dish-foot"><b>₹289</b><button class="add" data-name="Paneer tikka power bowl">Add</button></div></div>
+      </article>
+      <article class="dish" data-type="veg">
+        <div class="dish-img"><img src="https://images.unsplash.com/photo-1630383249896-424e482df921?w=700&q=80&auto=format&fit=crop" alt="Idli and vada with chutneys"></div>
+        <div class="dish-body"><span class="dish-brand">Dosa Republic</span><h3>Ghee podi idli-vada</h3><div class="dish-foot"><b>₹149</b><button class="add" data-name="Ghee podi idli-vada">Add</button></div></div>
+      </article>
+      <article class="dish" data-type="veg">
+        <div class="dish-img"><img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=700&q=80&auto=format&fit=crop" alt="Pizza"></div>
+        <div class="dish-body"><span class="dish-brand">Slice &amp; Co</span><h3>Peri peri paneer pizza</h3><div class="dish-foot"><b>₹399</b><button class="add" data-name="Peri peri paneer pizza">Add</button></div></div>
+      </article>
+      <article class="dish" data-type="nonveg">
+        <div class="dish-img"><img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?w=700&q=80&auto=format&fit=crop" alt="Noodles with chicken"></div>
+        <div class="dish-body"><span class="dish-brand">Wok Street</span><h3>Dragon chicken combo</h3><div class="dish-foot"><b>₹299</b><button class="add" data-name="Dragon chicken combo">Add</button></div></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ZONES -->
+  <section class="zones" id="zones">
+    <div class="zones-card">
+      <h2>Do we deliver to you?</h2>
+      <p>We deliver within 7 km of our HSR Layout kitchen so food arrives hot.</p>
+      <form class="zone-form" id="zoneForm">
+        <label for="zoneInput" class="sr">Your area</label>
+        <input id="zoneInput" type="text" placeholder="Type your area, e.g. Koramangala" autocomplete="off">
+        <button type="submit" class="btn btn-yellow">Check</button>
+      </form>
+      <p class="zone-result" id="zoneResult" role="status"></p>
+      <ul class="zone-cloud" id="zoneCloud">
+        <li>HSR Layout</li><li>Koramangala</li><li>BTM Layout</li><li>Bellandur</li><li>Sarjapur Road</li><li>Indiranagar</li><li>Domlur</li><li>JP Nagar</li><li>Jayanagar</li><li>Electronic City Ph 1</li><li>Marathahalli</li><li>Bommanahalli</li><li>Agara</li><li>Ejipura</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CORPORATE -->
+  <section class="corp">
+    <div class="corp-img"><img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=1200&q=80&auto=format&fit=crop" alt="Catering spread of dishes for a group"></div>
+    <div class="corp-copy">
+      <h2>Feeding an office or a party?</h2>
+      <p>Mix dishes from all six brands in one order. Daily office lunches from 25 meals, party trays from 15 guests, with one invoice and GST billing.</p>
+      <a href="mailto:bulk@hungryhive.in" class="btn btn-dark magnetic">Get a bulk quote</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="foot-top">
+    <h2>Hungry?<br>We're already cooking.</h2>
+    <div class="foot-apps">
+      <a href="#" class="app-pill">Order on Swiggy</a>
+      <a href="#" class="app-pill">Order on Zomato</a>
+      <a href="#bestsellers" class="app-pill app-pill-main">Order direct, save 10%</a>
+    </div>
+  </div>
+  <div class="foot-grid">
+    <div><h4>Kitchen</h4><p>Plot 14, Sector 6, HSR Layout<br>Bengaluru 560102<br>Delivery only, no dine-in</p></div>
+    <div><h4>Hours</h4><p>Every day, 7 am – 2 am<br>Breakfast menu till 11 am</p></div>
+    <div><h4>Help</h4><p><a href="tel:+918049876543">+91 80 4987 6543</a><br><a href="mailto:hello@hungryhive.in">hello@hungryhive.in</a></p></div>
+    <div><h4>Certified</h4><p>FSSAI Lic. 11224333000123<br>Hygiene rating: 5/5</p></div>
+  </div>
+  <p class="foot-legal">© 2026 Hungry Hive Kitchens Pvt. Ltd.</p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
